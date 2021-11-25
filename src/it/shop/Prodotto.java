@@ -13,8 +13,10 @@ public class Prodotto {
 	// costruttore
 	public Prodotto() {
 		this.codice = generaCodice();
-		this.prezzo = prezzo();
-		this.iva = prezzoConIva();
+		
+		
+		
+	
 	}
 	
 	// gettere e setter
@@ -24,9 +26,9 @@ public class Prodotto {
 
 	public void setNome(String nome) {
 		if(nomeNonValido(nome)) {
+			// errore
 			System.out.println("Il nome non è valido");
 		} else {
-			// errore
 			this.nome = nome;
 		}
 		
@@ -38,7 +40,13 @@ public class Prodotto {
 	}
 
 	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+		if(nomeNonValido(descrizione)) {
+			// errore
+			System.out.println("La descrizione non è valida");
+		} else {
+			this.descrizione = descrizione;
+		}
+		
 	}
 
 	public double getPrezzo() {
@@ -88,13 +96,13 @@ public class Prodotto {
 
 	// metodo per il prezzo con iva
 	public double prezzoConIva() {
-		double prezzoConIva = prezzo * iva;
-		return prezzoConIva; // avrei potuto scrivere direttamente ---> return prezzo*iva;
+		double prezzoConIva = prezzo + (prezzo * iva);
+		return prezzoConIva; // avrei potuto scrivere direttamente ---> return prezzo + prezzo*iva;
 	}
 	
 	// metodo nome esteso, nome prodotto + codice
 	public String nomeEsteso() {
-	return nome + codice;
+	return nome + " " + codice;
 	}
 	
 	// metodo per validare nome
@@ -109,6 +117,6 @@ public class Prodotto {
 	
 	// metodo per validare iva
 	private boolean ivaValida(double iva) {
-		return iva == 0.22 && iva == 0.004;
+		return iva == 0.22 || iva == 0.004;
 	}
 }
