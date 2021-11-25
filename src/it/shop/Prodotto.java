@@ -86,7 +86,7 @@ public class Prodotto {
 	// metodo che genera codice casuale
 	private int generaCodice() {
 		Random random = new Random();
-		return random.nextInt(); 
+		return random.nextInt(1000); 
 	}
 	
 	// metodo per il prezzo del prodotto
