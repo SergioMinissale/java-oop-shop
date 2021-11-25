@@ -1,38 +1,35 @@
 package it.shop;
+
 import java.util.Random;
 
 public class Prodotto {
-	
+
 	// attributi
 	private int codice;
 	private String nome;
 	private String descrizione;
 	private double prezzo;
 	private double iva;
-	
+
 	// costruttore
 	public Prodotto() {
 		this.codice = generaCodice();
-		
-		
-		
-	
+
 	}
-	
+
 	// gettere e setter
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
-		if(nomeNonValido(nome)) {
+		if (nomeNonValido(nome)) {
 			// errore
 			System.out.println("Il nome non è valido");
 		} else {
 			this.nome = nome;
 		}
-		
-		
+
 	}
 
 	public String getDescrizione() {
@@ -40,13 +37,13 @@ public class Prodotto {
 	}
 
 	public void setDescrizione(String descrizione) {
-		if(nomeNonValido(descrizione)) {
+		if (nomeNonValido(descrizione)) {
 			// errore
 			System.out.println("La descrizione non è valida");
 		} else {
 			this.descrizione = descrizione;
 		}
-		
+
 	}
 
 	public double getPrezzo() {
@@ -54,14 +51,13 @@ public class Prodotto {
 	}
 
 	public void setPrezzo(double prezzo) {
-		if(prezzoValido(prezzo)) {
+		if (prezzoValido(prezzo)) {
 			this.prezzo = prezzo;
 		} else {
 			// errore
 			System.out.println("Il prezzo inserito non è valido");
 		}
-		
-		
+
 	}
 
 	public double getIva() {
@@ -69,14 +65,13 @@ public class Prodotto {
 	}
 
 	public void setIva(double iva) {
-		if(ivaValida(iva)) {
+		if (ivaValida(iva)) {
 			this.iva = iva;
 		} else {
 			// errore
 			System.out.println("Iva inserita non valida");
 		}
-		
-		
+
 	}
 
 	public int getCodice() {
@@ -86,9 +81,9 @@ public class Prodotto {
 	// metodo che genera codice casuale
 	private int generaCodice() {
 		Random random = new Random();
-		return random.nextInt(1000); 
+		return random.nextInt(1000);
 	}
-	
+
 	// metodo per il prezzo del prodotto
 	public double prezzo() {
 		return prezzo;
@@ -99,22 +94,22 @@ public class Prodotto {
 		double prezzoConIva = prezzo + (prezzo * iva);
 		return prezzoConIva; // avrei potuto scrivere direttamente ---> return prezzo + prezzo*iva;
 	}
-	
+
 	// metodo nome esteso, nome prodotto + codice
 	public String nomeEsteso() {
-	return nome + " " + codice;
+		return nome + " " + codice;
 	}
-	
+
 	// metodo per validare nome
 	private boolean nomeNonValido(String nome) {
 		return nome == null || nome.length() == 0;
 	}
-	
+
 	// metodo per validare prezzo
 	private boolean prezzoValido(double prezzo) {
 		return prezzo > 0;
 	}
-	
+
 	// metodo per validare iva
 	private boolean ivaValida(double iva) {
 		return iva == 0.22 || iva == 0.004;
